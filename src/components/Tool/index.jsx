@@ -19,10 +19,15 @@ import PriceList from "./PriceList"
 import {
   uid
 } from "uid"
+import {
+  useAutoAnimate
+} from '@formkit/auto-animate/react'
+
 
 const libraries = ["places"]
 
 export default function Tool () {
+  const [animationParent] = useAutoAnimate()
 
   function secondsToHms(d) {
     d = Number(d);
@@ -193,17 +198,24 @@ export default function Tool () {
       Add Stop
       </button>
       </div>
-      <div className="grid gap-3 mb-4">
+
+      <div className="space-y-3.5  mb-4 relative" ref={animationParent}>
+            <div className="w-[.1rem] h-full absolute top-0 left-[1rem] z-10 py-6">
+            <div className="border-l-2 border-dashed border-gray-800 w- h-full" />
+        </div>
       <Autocomplete>
       <div className="fit relative">
+      <div className="absolute top-0 bottom-0 left-0 w-[2.1rem] h-full grid place-items-center z-20 bg-white/60">
+      <div className="w-2 h-2 bg-gray-800" />
+          </div>
       <input className="input" placeholder="Chose start location" ref={pickupRef}
-          onKeyPress={() => {
-            if (currentLocation) {
-              setCurrentLocation(null)
-              pickupRef.current.value = ""
-            }
+            onKeyPress={() => {
+              if (currentLocation) {
+                setCurrentLocation(null)
+                pickupRef.current.value = ""
+              }
 
-          }} />
+            }} />
       <button onClick={getCurrentLocation}>
     <BiCurrentLocation className="absolute right-0 top-0 w-12 h-full py-2.5 text-slate-500" />
     </button>
@@ -213,12 +225,15 @@ export default function Tool () {
           return (
             <div key={obj.id} className="grid grid-cols-[1fr_auto]">
             <Autocomplete>
+            <div className="relative">
+                  <div className="absolute top-0 bottom-0 left-0 w-[2.1rem] h-full grid place-items-center z-20 bg-white/60">
+      <div className="z-20 w-2 h-2 bg-white border-2  border-gray-800" />
+            </div>
       <input className="input" placeholder="Add stop location"
               onChange={(e) => handleUpdateWaypoint(e.target.value, obj.id)}
               onBlur={(e) => handleUpdateWaypoint(e.target.value, obj.id)}
-
-
               />
+            </div>
       </Autocomplete>
       <button className="px-4 text-2xl"
               onClick={() => handleRemoveWaypoint(obj.id)}>
@@ -230,10 +245,16 @@ export default function Tool () {
 
 
     <Autocomplete>
+    <div className="relative">
+          <div className="absolute top-0 bottom-o left-0 w-[2.1rem] h-full grid place-items-center z-20 bg-white/60">
+      <div className="w-2 h-2 rounded-full bg-gray-800" />
+        </div>
       <input className="input" placeholder="Chose destination location" ref={dropRef} />
+      </div>
       </Autocomplete>
-        <button onClick={getDirection} className="bg-indigo-500 text-white text-lg rounded px-2.5 py-2"> Get Fare</button>
   </div>
+        <button onClick={getDirection} className="w-full mb-5 bg-indigo-500 text-white text-lg rounded px-2.5 py-2"> Get Fare</button>
+
 
     <div className="md:grid md:grid-cols-2 md:gap-4 ">
 

@@ -1,0 +1,24 @@
+/* ./src/index.css */
+@import url("https://fonts.googleapis.com/css2?family=ADELIA&family=Poppins&family=Ubuntu&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::after,
+  *::before {
+    @apply box-border;
+  }
+  body {
+    @apply bg-[rgb(244,246,250)] font-poppins;
+  }
+  button {
+    @apply select-none;
+  }
+  .input {
+    @apply bg-white shadow-md focus:outline-none rounded w-full h-12 px-2  text-gray-800;
+    @apply bg-white shadow-md focus:outline-none rounded w-full h-12 px-2  text-gray-800;
+  }
+}

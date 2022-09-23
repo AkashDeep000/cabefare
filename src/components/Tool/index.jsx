@@ -75,7 +75,7 @@ export default function Tool () {
     }
     const hour = time.split(":")[0]
 
-    if (hour >= 23 || hour <= 5) {
+    if (hour >= 23 || hour <= 4) {
       return true
     }
     return false
@@ -326,6 +326,11 @@ export default function Tool () {
         </div>
       </div>
       </div>
+      {isNight &&
+      <div className="p-4 bg-white text-red-400 rounded">
+      Your journey time is between 11PM to 5AM. So your bill will be 25% extra.
+      </div>
+      }
     </div>
     {directionRes &&
     <PriceList distance={distance} isNight={isNight} person={person} />

@@ -272,7 +272,7 @@ export default function Tool () {
       <div className="flex justify-around text-center text-gray-800 p-4 pt-6">
     <div className="">
   <p className='text-2xl font-ubuntu'>
-        {(duration / 1000).toFixed(1)}km
+        {(distance / 1000).toFixed(1)}km
       </p>
       <p className=''>
       distance

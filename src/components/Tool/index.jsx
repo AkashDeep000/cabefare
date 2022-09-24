@@ -201,7 +201,7 @@ export default function Tool () {
       <div className="absolute top-0 bottom-0 left-0 w-[2.1rem] h-full grid place-items-center z-20 bg-white/60">
       <div className="w-2 h-2 bg-gray-800" />
           </div>
-      <input className="input" placeholder="Chose start location" ref={pickupRef}
+      <input className="input pr-12" placeholder="Chose start location" ref={pickupRef}
             onKeyPress={() => {
               if (currentLocation) {
                 setCurrentLocation(null)

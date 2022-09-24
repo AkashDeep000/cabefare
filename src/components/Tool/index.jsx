@@ -202,7 +202,7 @@ export default function Tool () {
       <div className="w-2 h-2 bg-gray-800" />
           </div>
       <input className="input pr-12" placeholder="Chose start location" ref={pickupRef}
-            onKeyPress={() => {
+            onChange={() => {
               if (currentLocation) {
                 setCurrentLocation(null)
                 pickupRef.current.value = ""

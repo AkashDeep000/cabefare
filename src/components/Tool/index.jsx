@@ -351,6 +351,6 @@ export default function Tool () {
     }
   </div>
 </div>
-</div>: <center>loading</center> } < /div >
+</div>: <center>loading...</center> } < /div >
 )
 }

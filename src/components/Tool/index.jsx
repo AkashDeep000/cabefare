@@ -19,25 +19,21 @@ import PriceList from "./PriceList"
 import {
   uid
 } from "uid"
-import {
-  useAutoAnimate
-} from '@formkit/auto-animate/react'
 
 
 const libraries = ["places"]
 
 export default function Tool () {
-  const [animationParent] = useAutoAnimate()
 
   function secondsToHms(d) {
     d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor(d % 3600 / 60);
-    var s = Math.floor(d % 3600 % 60);
+    const h = Math.floor(d / 3600);
+    const m = Math.floor(d % 3600 / 60);
+    const s = Math.floor(d % 3600 % 60);
 
-    var hDisplay = h > 0 ? h + (h == 1 ? " hr ": " hrs "): "";
-    var mDisplay = m > 0 ? m + (m == 1 ? " min ": " mins "): "";
-    var sDisplay = (!h && !m) && s > 0 || !h || !m ? s + (s == 1 || 0 ? " sec": " secs"): "";
+    const hDisplay = h > 0 ? h + (h == 1 ? " hr ": " hrs "): "";
+    const mDisplay = m > 0 ? m + (m == 1 ? " min ": " mins "): "";
+    const sDisplay = (!h && !m) && s > 0 || !h || !m ? s + (s == 1 || 0 ? " sec": " secs"): "";
     return hDisplay + mDisplay + sDisplay;
   }
 
@@ -97,7 +93,6 @@ export default function Tool () {
   }
 
   const handleUpdateWaypoint = (value, id) => {
-
     const newState = waypointsInput.map((e) => {
       if (e.id === id) {
         return {
@@ -134,18 +129,17 @@ export default function Tool () {
   }
 
   const getDirection = async () => {
-    console.log(currentLocation)
+
     if (!currentLocation && pickupRef.current.value === "" || dropRef.current.value === "") {
       toast.error("Plese provide all fields")
       return
     }
 
-    for (var i = 0; i < waypointsInput.length; i++) {
+    for (let i = 0; i < waypointsInput.length; i++) {
       if (!waypointsInput[i].value) {
         toast.error("Plese provide all fields")
         return
       }
-
     }
 
 
@@ -164,24 +158,23 @@ export default function Tool () {
         travelMode: google.maps.TravelMode.DRIVING,
         optimizeWaypoints: true,
       })
-      console.log(result)
+      //  console.log(result)
       setDirectionRes(result)
       let distance = 0
       let duration = 0
       result.routes[0].legs.forEach((el) => {
-
         distance += el.distance.value
         duration += el.duration.value
       })
       setDuration(duration)
       setDistance(distance)
-      console.log(distance, duration)
+      //console.log(distance, duration)
     } catch (e) {
       toast.error("Error finding routes")
     }
   }
 
-  console.log(waypointsInput)
+  // console.log(waypointsInput)
 
   return (
     <div className="w-full px-4 pt-6">
@@ -199,7 +192,7 @@ export default function Tool () {
       </button>
       </div>
 
-      <div className="space-y-3.5  mb-4 relative" ref={animationParent}>
+      <div className="space-y-3.5 mb-4 relative">
             <div className="w-[.1rem] h-full absolute top-0 left-[1rem] z-10 py-6">
             <div className="border-l-2 border-dashed border-gray-800 w- h-full" />
         </div>
@@ -322,7 +315,7 @@ export default function Tool () {
       </div>
     <div className="grid px-2">
     <p className="mb-2">
- Total person
+      Total person
         </p>
 
     <div className="shadow text-xl text-gray-800 grid grid-cols-[auto_1fr_auto]">
